@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    <div>
+        <!--<h3 align="middle"> Welcome {{ username }} </h3>-->
+            <!--<p><img src={{ profile_pic }} align="left" alt="profile pic" style="width:100%;" ></p>-->
+        <div>
+            <h3>List of Courses registered for {{username }}</h3>
+        <p align="right"><a href="{% url 'students:add_course'%}" class="btn btn-primary">Add Course</a>
+            <a href="{% url 'students:student_profile'%}" class="btn btn-primary">View Profile</a></p>
+        </div>
+
+        <table  class="table mb-0">
+            <thead>
+            <th>Course</th>
+            <th>Action</th>
+            </thead>
+            <tdoby>
+                {% for course in courses %}
+                    <tr><td class="align-middle">{{ course.name }}</td>
+                    <td class="align-middle"><a href="{% url 'students:student_attendance' course_id=course.id %}">View Attendance</a></td></tr>
+                {% endfor %}
+            </tdoby>
+        </table>
+    </div>
+</div>
+{% endblock %}

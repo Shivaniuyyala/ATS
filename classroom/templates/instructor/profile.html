@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    <form enctype="multipart/form-data" method='post' action=''>
+        <p>{{ form.errors }}</p>
+        <p>{{ form.non_field_errors }}</p>
+        {% csrf_token %}
+            <table class="table mb-0">
+                <h3> Profile Information </h3>
+            {{form.as_table}}
+            <tr> <td class="align-middle"><a href="{% url 'instructor:instructor_home'%}" class="btn btn-primary">Back</a></td>
+                <td> <input type='submit' value='Edit Profile' class="btn btn-primary" /> </td></tr>
+            </table>
+    </form>
+</div>
+{% endblock %}

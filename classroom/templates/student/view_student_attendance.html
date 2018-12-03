@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    <h2>My Courses</h2>
+    <div>
+        <table  class="table mb-0">
+            <thead>
+            <th>Course</th>
+            <th>date</th>
+            <th>is present</th>
+            </thead>
+            <tdoby>
+                {% for attendance in attendances %}
+                    <tr><td class="align-middle">{{ attendance.course.name }}</td>
+                    <td class="align-middle">{{ attendance.day }}</td>
+                    <td class="align-middle">{{ attendance.is_present }}</td></tr>
+                {% endfor %}
+            </tdoby>
+        </table>
+    </div>
+    <div>
+        <p class="align-middle"><a href="{% url 'students:student_home'%}"  class="btn btn-primary">Back</a></p>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Welcome to the Attendance Tracking System</h2>
+  <p class="lead">
+    If you already have an account, go ahead and <a href="{% url 'login' %}">log in</a>. If you are new to Attendance Tracking System, get started
+    by creating a <a href="{% url 'student_signup' %}">student account</a> or a <a href="{% url 'instructor_signup' %}">instructor account</a>.
+  </p>
+{% endblock %}
+

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+<form action='' method='post'>
+{% csrf_token %}
+   <h2>Attendance for {{ course }}</h2>
+    <div>
+        <table  class="table mb-0">
+             {{form}}
+            <tr><td>From date: </td><td><input type="date" name="from_date"></td>
+            <td>To date: </td><td><input type="date" name="to_date"></td></tr>
+             <tr><td><button type="submit" class="btn btn-primary">Show Attendance</button>
+                </td></tr>
+            </table></div></form>
+    <div><table class="table mb-0">
+            {% if attendances %}
+                <thead>
+                <th>Student</th>
+                <th>date</th>
+                <th>is present</th>
+                </thead>
+                <tdoby>
+                    {% for attendance in attendances %}
+                        <tr><td class="align-middle">{{ attendance.student.user.username }}</td>
+                        <td class="align-middle">{{ attendance.day }}</td>
+                        <td class="align-middle">{{ attendance.is_present }}</td></tr>
+                    {% endfor %}
+                </tdoby>
+            {% endif %}
+            {% if mesg %}
+            <p>{{ mesg }}</p>
+            {% endif %}
+
+        </table>
+    </div>
+    <div>
+        <p class="align-middle"><a href="{% url 'instructor:instructor_home'%}"  class="btn btn-primary">Back</a></p>
+    </div>
+</div>
+{% endblock %}
